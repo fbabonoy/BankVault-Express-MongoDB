@@ -1,0 +1,26 @@
+{
+  "name": "sba319mongodbdatabaseapplication",
+  "version": "1.0.0",
+  "description": "BankVault Express is a simple banking application built with Node.js and Express. It allows users to create accounts, deposit money, withdraw money, and view transaction history. The project is being transitioned from using an object for data storage to using MongoDB with Mongoose.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fbabonoy/BankVault-Express-MongoDB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/fbabonoy/BankVault-Express-MongoDB/issues"
+  },
+  "homepage": "https://github.com/fbabonoy/BankVault-Express-MongoDB#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.6"
+  }
+}

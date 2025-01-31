@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- <script type="module" src="script.js"></script> -->
+
+    <style>
+        body {
+            padding: 40px;
+            /* text-align: center; */
+            display: flex;
+            justify-content: center;
+        }
+
+        img {
+            width: 50px;
+            position: relative;
+            bottom: 30px;
+            padding: 0;
+            border-radius: 50%;
+            box-shadow: 8px 10px 10px gray;
+            background-color: rgb(238, 235, 235);
+            filter: invert(100%);
+        }
+
+        #card {
+            text-align: center;
+            border: 1px solid rgb(213, 211, 211);
+            width: 250px;
+            background-color: rgb(244, 242, 242);
+            box-shadow: 7px 15px 8px rgb(147, 146, 146);
+
+
+        }
+
+        #cardInfo {
+            position: relative;
+            bottom: 20px;
+        }
+
+        p {
+            font-weight: bold;
+            padding-bottom: 20;
+        }
+
+        #login {
+            width: 165px;
+            background-color: rgb(0, 217, 236);
+            color: white;
+        }
+
+        input {
+            background-color: rgb(219, 219, 219);
+
+        }
+
+        input::placeholder {
+            text-align: center;
+            color: gray;
+        }
+
+        .tile {
+            /* width: 150px; */
+            border: none;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 2px;
+        }
+
+        a {
+            color: rgb(250, 183, 0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="card">
+        <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fpluspng.com%2Fimg-png%2Fuser-png-icon-big-image-png-2240.png&f=1&nofb=1&ipt=2efae406eed4a7684c4aed94870996f8ea10050f6096f92ab1420cee2dfc7f9f&ipo=images"
+            alt="">
+        <form action="" method="get" class="form-example" id="cardInfo">
+            <p>User Login</p>
+            <input type="email" placeholder="UserName" name="email" class="tile" id="userName">
+            <br>
+            <input type="password" placeholder="password" class="tile" id="password">
+            <br>
+            <input type="submit" class="tile" placeholder="Login" id="login">
+            <br>
+            <a href="/accounts/johndoe@example.compassword123/?api-key=admin">Register</a>
+        </form>
+    </div>
+    <script>
+        let email = document.querySelector("#userName")
+        let password = document.querySelector("#password")
+        const login = document.querySelector("#cardInfo")
+
+
+        function isValidEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+
+        login.addEventListener("click", (e) => {
+            e.preventDefault()
+
+            if (e.target.id !== "login") return
+
+
+
+
+            if (email.value && password.value && isValidEmail(email.value)) {
+
+                window.location.href = `/accounts/${email.value + password.value}/?api-key=admin`
+            } else if (!isValidEmail(email.value)) {
+                alert("use a valid email")
+            } else {
+                alert("you need both and emmal and a passowed")
+            }
+
+        })
+
+        
+
+    </script>
+</body>
+
+</html>
