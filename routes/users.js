@@ -5,9 +5,9 @@ const userModule = require("../module/userM")
 const moduleTransactions = require("../module/transactions")
 
 
-const accounts = require("../data/accounts")
-const transactions = require("../data/transactions")
-const emailsInUse = require("../data/logIn")
+// const accounts = require("../data/accounts")
+// const transactions = require("../data/transactions")
+// const emailsInUse = require("../data/logIn")
 
 
 router
