@@ -4,17 +4,17 @@ const router = express.Router()
 
 // const transactions = require("../data/transactions")
 
-// router
-//     .route("/")
-//     .get((req, res) => {
-//         let allTransaction = []
+router
+    .route("/")
+    .get((req, res) => {
+        let allTransaction = []
 
-//         for (let account in transactions) {
-//             allTransaction.push(transactions[account])
-//         }
+        for (let account in transactions) {
+            allTransaction.push(transactions[account])
+        }
 
-//         allTransaction = allTransaction.flat()
-//         res.json({ allTransaction });
-//     })
+        allTransaction = allTransaction.flat()
+        res.json({ allTransaction });
+    })
 
-// module.exports = router;
+module.exports = router;
