@@ -6,6 +6,7 @@ dotenv.config();
 // const path = require("path");
 
 const auth = require("./routes/auth");
+const register = require("./routes/register")
 const users = require("./routes/users");
 const transfers = require("./routes/transactions");
 
@@ -44,6 +45,7 @@ app.use("/accounts", function (req, res, next) {
 });
 
 app.use("/auth", auth);
+app.use("/register", register);
 app.use("/accounts", users);
 // app.use("/transactions", transfers);
 
