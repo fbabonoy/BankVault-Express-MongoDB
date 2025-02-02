@@ -47,7 +47,7 @@ app.use("/accounts", function (req, res, next) {
 app.use("/auth", auth);
 app.use("/register", register);
 app.use("/accounts", users);
-// app.use("/transactions", transfers);
+app.use("/transactions", transfers);
 
 app.get("/", (req, res) => {
     res.json({
@@ -62,11 +62,16 @@ app.get("/", (req, res) => {
                 rel: "",
                 type: "GET",
             },
-            // {
-            //     href: "/auth",
-            //     rel: "",
-            //     type: "GET",
-            // },
+            {
+                href: "/auth",
+                rel: "",
+                type: "GET",
+            },
+            {
+                href: "/register",
+                rel: "",
+                type: "POST",
+            },
         ],
     });
 });
