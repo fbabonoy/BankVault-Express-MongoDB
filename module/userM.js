@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const { type } = require("os")
 
 const accounts = mongoose.Schema({
     email: {
@@ -10,6 +9,7 @@ const accounts = mongoose.Schema({
         type: "String",
         require: "true"
     },
+    accounts: [Number]
 
 })
 

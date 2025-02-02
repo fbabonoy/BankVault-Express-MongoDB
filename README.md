@@ -26,16 +26,16 @@ BankVault Express is a simple banking application built with Node.js and Express
 
 ### Routes
 - `GET /accounts` - Explains data.
-- `POST /accounts` - Create a new account.
-- `GET /transactions` - View all transaction history.
+<!-- - `POST /accounts` - Create a new account. -->
+<!-- - `GET /transactions` - View all transaction history. -->
 - `GET /accounts/:id` - Get account details.
 - `PATCH /accounts/:id` - Update an account.
 - `DELETE /accounts/:id` - Delete an account.
-- `POST /accounts/:id/deposit` - Deposit money into an account.
+<!-- - `POST /accounts/:id/deposit` - Deposit money into an account.
 - `POST /accounts/:id/withdraw` - Withdraw money from an account.
 - `GET /accounts/:id/transactions` - View transaction history for an account.
 - `GET /accounts/:id/transactions/:transactionId` - View a specific transaction detail.
-- `DELETE /accounts/:id/transactions/:transactionId` - Delete a specific transaction.
+- `DELETE /accounts/:id/transactions/:transactionId` - Delete a specific transaction. -->
 
 ### Authentication (Bonus)
 - Authentication is not fully implemented. A token system needs to be added and expired after a period of time.

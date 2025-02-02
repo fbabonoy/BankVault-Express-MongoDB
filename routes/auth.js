@@ -4,27 +4,46 @@ const emails = require("../data/logIn")
 
 const path = require("path");
 
+const auth = require("../module/auth")
+let users = true
+
+
 
 // Serve CSS and JS from "assets" folder (one level up)
 
 router
     .route("/")
-    .get((req, res)=>{
-                
-        res.sendFile(path.join(__dirname,"..", "logInPage", "index.html"));
+    .get((req, res) => {
+        if (users) {
+            createNewUser()
+            users = false
+        }
+
+        res.sendFile(path.join(__dirname, "..", "logInPage", "index.html"));
     })
-    .post((req, res, next) => {
+    .post(async (req, res, next) => {
+        let emailCheck = req.body.email
+        let passwordCheck = req.body.password
 
+        const user = await auth.find({email: emailCheck, password: passwordCheck})
+                
+        if (user.length > 0) {
+            res.send({ condition: "login successful" })
 
-        let email = req.body.email
-        let password = req.body.password
-
-        if (email && password && emails[email] === password) {
-
-            res.redirect(`/users/${email + password}/?api-key=${"admin"}`)
+            // res.redirect(`/users/${email + password}/?api-key=${"admin"}`)
         } else {
             next()
         }
     })
+
+
+async function createNewUser() {
+    for (let x = 1; x < 31; x++) {
+        await auth.create({
+            email: `virginia36${x}@hotmail.com`,
+            password: `password${x}`
+        });
+    }
+}
 
 module.exports = router

@@ -1,7 +1,10 @@
 const express = require("express")
 const router = express.Router()
 
-const moduleAccount = require("../module/accounts")
+const userModule = require("../module/userM")
+const moduleTransactions = require("../module/transactions")
+
+
 const accounts = require("../data/accounts")
 const transactions = require("../data/transactions")
 const emailsInUse = require("../data/logIn")
@@ -15,7 +18,7 @@ router
             rel: "_id",
             type: "GET"
         }];
-        const data = await moduleAccount.find().limit(30)
+        const data = await userModule.find().limit(30)
         res.json({ users: data, links });
 
     })
@@ -82,8 +85,7 @@ router
             ];
 
 
-            // console.log(user);
-            const data = await moduleAccount.findById(id)
+            const data = await userModule.findById(id)
             res.json({ user: data, links });
         }
         catch (error) {
@@ -95,10 +97,7 @@ router
     )
     .patch(async (req, res, next) => {
         try {
-            console.log(req.params.id);
-            console.log(req.body.name);
-
-            await moduleAccount.findByIdAndUpdate(req.params.id, req.body)
+            await userModule.findByIdAndUpdate(req.params.id, req.body)
 
             res.json({ "response": "Updated" })
 
@@ -110,7 +109,7 @@ router
 
     })
     .delete(async (req, res, next) => {
-        const result = await moduleAccount.findByIdAndDelete(req.params.id)
+        const result = await userModule.findByIdAndDelete(req.params.id)
         console.log(result)
         res.json('User deleted.')
     })
@@ -159,7 +158,7 @@ router
 
 router
     .route("/:id/transactions")
-    .get((req, res, next) => {
+    .get(async (req, res, next) => {
 
         const link = [
             {
@@ -169,10 +168,23 @@ router
             }
         ]
 
+        try {
 
-        let userTransfers = transactions[accounts[req.params.id].accountNumber]
-        if (transactions) res.json({ userTransfers, link })
-        else next();
+            let userTransfers = await userModule.findById(req.params.id)
+            let accoutns = []
+
+            for (let account of userTransfers.accounts) {
+                const data = await moduleTransactions.find({ account_id: account })
+                if (data) {
+                    accoutns.push(data.pop())
+                }
+            }
+
+            res.json({ accoutns, link })
+        } catch (error) {
+            console.log(error)
+            next()
+        }
     })
 
 

@@ -5,7 +5,7 @@ dotenv.config();
 // const bodyParser = require("body-parser");
 // const path = require("path");
 
-// const auth = require("./routes/auth");
+const auth = require("./routes/auth");
 const users = require("./routes/users");
 const transfers = require("./routes/transactions");
 
@@ -43,7 +43,7 @@ app.use("/accounts", function (req, res, next) {
     next();
 });
 
-// app.use("/auth", auth);
+app.use("/auth", auth);
 app.use("/accounts", users);
 // app.use("/transactions", transfers);
 
