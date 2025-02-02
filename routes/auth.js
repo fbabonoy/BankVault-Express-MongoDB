@@ -9,11 +9,7 @@ const auth = require("../module/auth")
 router
     .route("/")
     .get(async (req, res) => {
-
-        // console.log(users);
-
         let user = await auth.find({email: `virginia363@hotmail.com`})
-        
         
         if (user.length < 1) {
             createNewUser()
