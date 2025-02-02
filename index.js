@@ -27,7 +27,7 @@ app.use(express.json())
 app.use("/auth", auth);
 app.use("/register", register);
 app.use("/accounts", users);
-app.use("/transactions", transfers);
+// app.use("/transactions", transfers);
 
 app.get("/", (req, res) => {
     res.json({

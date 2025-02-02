@@ -1,22 +1,22 @@
 const express = require("express")
 const router = express.Router()
-// const emails = require("../data/logIn")
 
 const path = require("path");
-
 const auth = require("../module/auth")
-let users = true
 
 
-
-// Serve CSS and JS from "assets" folder (one level up)
 
 router
     .route("/")
-    .get((req, res) => {
-        if (users) {
+    .get(async (req, res) => {
+
+        // console.log(users);
+
+        let user = await auth.find({email: `virginia363@hotmail.com`})
+        
+        
+        if (user.length < 1) {
             createNewUser()
-            users = false
         }
 
         res.sendFile(path.join(__dirname, "..", "logInPage", "index.html"));

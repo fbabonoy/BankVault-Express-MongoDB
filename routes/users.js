@@ -5,11 +5,6 @@ const userModule = require("../module/userM")
 const moduleTransactions = require("../module/transactions")
 
 
-// const accounts = require("../data/accounts")
-// const transactions = require("../data/transactions")
-// const emailsInUse = require("../data/logIn")
-
-
 router
     .route("/")
     .get(async (req, res) => {
@@ -134,6 +129,8 @@ router
 //         if (req.body.amount) res.json({ transaction: deposit })
 //         else next();
 //     })
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // router
 //     .route("/:id/withdraw")
