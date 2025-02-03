@@ -3,6 +3,7 @@ const router = express.Router()
 
 const userModule = require("../module/userM")
 const moduleTransactions = require("../module/transactions")
+const transactions = require("../module/transactions")
 
 
 router
@@ -184,6 +185,37 @@ router
         }
     })
 
+
+    router
+    .route("/:id/:accountNum")
+    .get(async (req, res, next) => {
+
+        // const link = [
+        //     {
+        //         href: `/${req.params.id}/transactions/:transactionId`,
+        //         rel: "id",
+        //         type: "GET",
+        //     }
+        // ]
+
+        try {
+
+            let userTransfers = await userModule.findById(req.params.id)
+            let data = await moduleTransactions.find({account_id: req.params.accountNum}, { transactions: 1, _id: 0 })
+
+           for (let account of userTransfers.accounts) {
+                if (account == req.params.accountNum) {
+                    res.json(data[0].transactions)
+                } 
+            }
+
+
+
+        } catch (error) {
+            console.log(error)
+            next()
+        }
+    })
 
 
 
