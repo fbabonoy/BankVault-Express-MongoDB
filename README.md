@@ -6,8 +6,6 @@ BankVault Express is a simple banking application built with Node.js and Express
 
 ### Core Features
 - Create a new bank account
-- Deposit money into an account
-- Withdraw money from an account
 - View transaction history for each account
 
 ## Technologies Used
