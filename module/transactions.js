@@ -5,8 +5,8 @@ const transactionSchema = new mongoose.Schema({
     amount: { type: Number, required: true },
     transaction_code: { type: String, required: true },
     symbol: { type: String, required: true },
-    price: { type: mongoose.Schema.Types.Decimal128, required: true }, // High precision
-    total: { type: mongoose.Schema.Types.Decimal128, required: true }  // High precision
+    price: { type: mongoose.Schema.Types.Decimal128, required: true }, 
+    total: { type: mongoose.Schema.Types.Decimal128, required: true }  
 });
 
 const transactions = new mongoose.Schema({

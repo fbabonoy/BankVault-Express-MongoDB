@@ -7,7 +7,6 @@ dotenv.config();
 const auth = require("./routes/auth");
 const register = require("./routes/register")
 const users = require("./routes/users");
-const transfers = require("./routes/transactions");
 
 const error = require("./utilities/error.mjs");
 
@@ -27,18 +26,12 @@ app.use(express.json())
 app.use("/auth", auth);
 app.use("/register", register);
 app.use("/accounts", users);
-// app.use("/transactions", transfers);
 
 app.get("/", (req, res) => {
     res.json({
         links: [
             {
                 href: "/accounts",
-                rel: "",
-                type: "GET",
-            },
-            {
-                href: "/transactions",
                 rel: "",
                 type: "GET",
             },

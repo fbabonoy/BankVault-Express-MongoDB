@@ -17,7 +17,7 @@ router
             createNewUser()
         }
 
-        res.sendFile(path.join(__dirname, "..", "logInPage", "index.html"));
+        res.send(user)
     })
     .post(async (req, res, next) => {
         let emailCheck = req.body.email
@@ -28,7 +28,6 @@ router
         if (user.length > 0) {
             res.send({ condition: "login successful" })
 
-            // res.redirect(`/users/${email + password}/?api-key=${"admin"}`)
         } else {
             next()
         }
